@@ -119,18 +119,27 @@ public class AlgorithmMenu {
 	
     // === 2. Selection Sort ===
     static void runSelectionSort() {
-        int[] arr = {64, 25, 12, 22, 11};
-        for (int i = 0; i < arr.length - 1; i++) {
-            int min = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[min]) min = j;
-            }
-            int temp = arr[min];
-            arr[min] = arr[i];
-            arr[i] = temp;
-        }
+        Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
 
-        System.out.println("Selection Sorted: " + Arrays.toString(arr));
+        System.out.print("Enter the number of elements (n): ");
+        int n = scanner.nextInt();
+
+        // Generate random array of n integers (range 0 to 100)
+        int[] elements1 = new int[n];
+        for (int i = 0; i < n; i++) {
+            elements1[i] = rand.nextInt(101); // 0 to 100
+        }
+		System.out.println("Selection Sort\nOriginal array:");
+        printArray(elements1);
+		
+		// Clone array for second test
+        int[] elements2 = elements1.clone();
+		
+		SelectionSortFunctions.selectionSortUnoptimized(elements1);
+		
+		printArray(elements2);
+		SelectionSortFunctions.selectionSortOptimized(elements1);
     }
 
     // === 3. Bubble Sort ===
@@ -199,19 +208,25 @@ public class AlgorithmMenu {
 
     // === 5. Sequential Search ===
     static void runSequentialSearch() {
-        int[] arr = {3, 7, 1, 9, 5};
-        System.out.print("Enter number to search: ");
-        int target = scanner.nextInt();
-        boolean found = false;
-
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) {
-                System.out.println("Found at index: " + i);
-                found = true;
-                break;
-            }
+        Scanner scanner = new Scanner(System.in);
+        
+        //Inputs for the array initialization
+        System.out.print("Enter size of array : ");
+        int size = Integer.parseInt(scanner.nextLine());
+		
+		int[] arr = new int[size];
+        System.out.println("Enter elements of the array :");
+        for(int i = 0; i < size; i++) {
+            arr[i] = Integer.parseInt(scanner.nextLine());
         }
 
-        if (!found) System.out.println("Not found.");
+        System.out.print("Enter number to search : ");
+        int searchItem = Integer.parseInt(scanner.nextLine());
+		
+		SequentialSearchFunctions.runSequentialSearch(arr, searchItem, size);
+		SequentialSearchFunctions.runImprovedSequentialSearch(arr, searchItem, size);
+		
+		
+		
     }
 }
