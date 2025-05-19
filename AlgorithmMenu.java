@@ -6,33 +6,34 @@ public class AlgorithmMenu {
 
     public static void main(String[] args) {
         while (true) {
-            System.out.println("\n=== Algorithm Menu ===");
-            System.out.println("1. Knapsack Problem");
-            System.out.println("2. Selection Sort");
-            System.out.println("3. Bubble Sort");
-            System.out.println("4. TSP Problem");
-            System.out.println("5. Sequential Search");
-            System.out.println("0. Exit");
-            System.out.print("Choose an algorithm (0-5): ");
-
+            printMenu();
             int choice = scanner.nextInt();
             scanner.nextLine(); // consume newline
 
             switch (choice) {
                 case 1:
-                    runKnapsack();
-                    break;
-                case 2:
                     runSelectionSort();
                     break;
-                case 3:
+                case 2:
                     runBubbleSort();
+                    break;
+                case 3:
+                    System.out.println("=== Sequential Search ===");
+                    printChoice();
+                    choice = scanner.nextInt();
+                    if(choice == 1){
+                        SequentialSearch.runSequentialSearch();
+                    }else if(choice == 2){
+                        ImprovedSequential.runImprovedSequentialSearch();
+                    }else{
+                        System.out.println("Invalid");
+                    }
                     break;
                 case 4:
                     runTSP();
                     break;
                 case 5:
-                    runSequentialSearch();
+                    runKnapsack();
                     break;
                 case 0:
                     System.out.println("Exiting. Goodbye!");
@@ -111,21 +112,21 @@ public class AlgorithmMenu {
         TSPFunctions.solveOptimized(matrix);
     }
 
-    // === 5. Sequential Search ===
-    static void runSequentialSearch() {
-        int[] arr = {3, 7, 1, 9, 5};
-        System.out.print("Enter number to search: ");
-        int target = scanner.nextInt();
-        boolean found = false;
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == target) {
-                System.out.println("Found at index: " + i);
-                found = true;
-                break;
-            }
-        }
-
-        if (!found) System.out.println("Not found.");
+    static void printMenu(){
+        System.out.println("\n=== Algorithm Menu ===");
+            System.out.println("1. Selection Sort");
+            System.out.println("2. Bubble Sort");
+            System.out.println("3. Sequential Search");
+            System.out.println("4. TSP Problem");
+            System.out.println("5. Knapsack Problem");
+            System.out.println("0. Exit");
+            System.out.print("Choose an algorithm (0-5): ");
+    }
+    
+    static void printChoice(){
+        System.out.println("1. Traditional Algorithm");
+        System.out.println("2. Optimized Algorithm");
+        System.out.print("Choice : ");
     }
 }
