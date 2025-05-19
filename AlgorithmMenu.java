@@ -116,8 +116,7 @@ public class AlgorithmMenu {
         maxValue = KnapsackFunctions.solveKnapsackDP(weights, values, capacity);
         System.out.println("Maximum value in knapsack (DP): " + maxValue);
     }
-
-    
+	
     // === 2. Selection Sort ===
     static void runSelectionSort() {
         int[] arr = {64, 25, 12, 22, 11};
@@ -136,22 +135,36 @@ public class AlgorithmMenu {
 
     // === 3. Bubble Sort ===
     static void runBubbleSort() {
-        int[] arr = {5, 1, 4, 2, 8};
-        boolean swapped;
-        for (int i = 0; i < arr.length - 1; i++) {
-            swapped = false;
-            for (int j = 0; j < arr.length - 1 - i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int tmp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = tmp;
-                    swapped = true;
-                }
-            }
-            if (!swapped) break;
+		Scanner scanner = new Scanner(System.in);
+        Random rand = new Random();
+
+        System.out.print("Enter the number of elements (n): ");
+        int n = scanner.nextInt();
+
+        // Generate random array of n integers (range 0 to 100)
+        int[] elements1 = new int[n];
+        for (int i = 0; i < n; i++) {
+            elements1[i] = rand.nextInt(101); // 0 to 100
         }
 
-        System.out.println("Bubble Sorted: " + Arrays.toString(arr));
+        System.out.println("Bubble Sort (Unoptimized)\nOriginal array:");
+        printArray(elements1);
+
+        // Clone array for second test
+        int[] elements2 = elements1.clone();
+
+        BubbleSortFunctions.bubbleSortUnoptimized(elements1);
+
+        System.out.println("Final sorted array (Unoptimized):");
+        printArray(elements1);
+
+        System.out.println("\nBubble Sort (Optimized)\nOriginal array:");
+        printArray(elements2);
+
+        BubbleSortFunctions.bubbleSortOptimized(elements2);
+
+        System.out.println("Final sorted array (Optimized):");
+        printArray(elements2);
     }
 
     // === 4. TSP Problem ===
