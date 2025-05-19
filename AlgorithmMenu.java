@@ -31,10 +31,14 @@ public class AlgorithmMenu {
                     SequentialSearch.runSequentialSearch(choice);
                     break;
                 case 4:
-                    // runTSP();
+                    System.out.println("=== Travelling Salesman Problem ===");
+                    printChoice();
+                    choice = scanner.nextInt();
                     break;
                 case 5:
-                    // runKnapsack();
+                    System.out.println("=== Knapsack Problem ===");
+                    printChoice();
+                    choice = scanner.nextInt();
                     break;
                 case 0:
                     System.out.println("Exiting. Goodbye!");
