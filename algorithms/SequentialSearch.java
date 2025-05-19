@@ -1,8 +1,10 @@
 import java.util.Scanner; //Import scanner for user input
 
 public class SequentialSearch {
+    private static int count = 0;//Variable for counting.
+
     //Method to call to search
-    public static int search(int arr[], int search, int size){
+    public static int searchTraditional(int arr[], int search, int size){
         for(int i = 0; i < size; i++) {//Iterate all elements in the array using loops.
             if(arr[i] == search) {//Checks if the element is equal to the target.
                 return i; //Returns the index if element is found
@@ -10,38 +12,9 @@ public class SequentialSearch {
         }
         return -1;//Return -1 if the target element is not in the array.
     }
-    public static void runSequentialSearch() {
-        Scanner scanner = new Scanner(System.in);
-        
-        //Inputs for the array initialization
-        System.out.print("Enter size of array : ");
-        int size = Integer.parseInt(scanner.nextLine());
 
-        int[] arr = new int[size];
-        System.out.println("Enter elements of the array:");
-        for(int i = 0; i < size; i++) {
-            arr[i] = Integer.parseInt(scanner.nextLine());
-        }
-
-        System.out.print("Enter number to search : ");
-        int searchItem = Integer.parseInt(scanner.nextLine());
-
-        //Calls for search method
-        int searchIndex = search(arr, searchItem, size);
-        if(searchIndex != -1){//Outputs the target/search index if found
-            System.out.println(searchItem + " is found at index " + searchIndex);
-            System.out.println("The element is found after " + (searchIndex+1) + " iteration/s"); //Outputs iterations needed to search.
-        }else{
-            System.out.println(searchItem + " is not found");
-        }
-        scanner.close();
-    }
-}
-
-public class ImprovedSequential {
-    private static int count = 0;//Variable for counting.
     //Method to call to improved search algorithm
-    public static int search(int arr[], int search, int size){
+    public static int searchOptimized(int arr[], int search, int size){
         int first = 0, last = arr.length - 1; //Initialized variable of both ends for iterations
         while(first <= last){ //Loop will stop until it reaches the middle of the array.
             count++;//Increments to know how many iterations needed to find the target.
@@ -57,7 +30,8 @@ public class ImprovedSequential {
         }
         return -1; //If not found returns -1
     }
-    public static void runImprovedSequentialSearch(){
+
+    public static void runSequentialSearch(int choice) {
         Scanner scanner = new Scanner(System.in);
         
         //Inputs for the array initialization
@@ -65,7 +39,7 @@ public class ImprovedSequential {
         int size = Integer.parseInt(scanner.nextLine());
 
         int[] arr = new int[size];
-        System.out.println("Enter elements of the array :");
+        System.out.println("Enter elements of the array:");
         for(int i = 0; i < size; i++) {
             arr[i] = Integer.parseInt(scanner.nextLine());
         }
@@ -73,11 +47,18 @@ public class ImprovedSequential {
         System.out.print("Enter number to search : ");
         int searchItem = Integer.parseInt(scanner.nextLine());
 
-        //Calls for search method
-        int searchIndex = search(arr, searchItem, size);
+        int searchIndex;
+        if(choice == 1){
+            searchIndex = searchTraditional(arr, searchItem, size);
+        }else if (choice == 2){
+            searchIndex = searchOptimized(arr, searchItem, size);
+        }else{
+            return;
+        }
+
         if(searchIndex != -1){//Outputs the target/search index if found
             System.out.println(searchItem + " is found at index " + searchIndex);
-            System.out.println("The element is found after " + count + " iteration/s"); //Outputs iterations needed to search.
+            System.out.println("The element is found after " + (searchIndex+1) + " iteration/s"); //Outputs iterations needed to search.
         }else{
             System.out.println(searchItem + " is not found");
         }

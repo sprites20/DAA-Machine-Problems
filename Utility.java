@@ -7,7 +7,10 @@ public class Utility
         arr[y] = temp;
     }
 
-
-    // Add other repetitive functions here (methods)
-    // ...
+    public static void printArray(int[] arr) {
+        for (int index = 0; index < arr.length; index++) {
+            System.out.print(arr[index] + " ");
+        }
+        System.out.println();
+    }
 }

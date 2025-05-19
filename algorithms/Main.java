@@ -10,7 +10,7 @@ public class Main {
 
         // Call TSPFunctions.main(), which solves both unoptimized and optimized for hardcoded matrix
         String[] emptyArgs = {};
-        TSPFunctions.main(emptyArgs);
+        TSP.main(emptyArgs);
 
         System.out.println("\n\nNow solving with a DIFFERENT matrix:\n");
 
@@ -29,7 +29,7 @@ public class Main {
 		
 		
         long startTime = System.nanoTime();
-        TSPFunctions.solveUnoptimized(matrix2);
+        TSP.solveUnoptimized(matrix2);
         long endTime = System.nanoTime();
         System.out.println("Unoptimized runtime (ms): " + (endTime - startTime) / 1_000_000.0);
 
@@ -46,7 +46,7 @@ public class Main {
 
 		
         startTime = System.nanoTime();
-        TSPFunctions.solveOptimized(matrix3);
+        TSP.solveOptimized(matrix3);
         endTime = System.nanoTime();
         System.out.println("Optimized runtime (ms): " + (endTime - startTime) / 1_000_000.0);
     }

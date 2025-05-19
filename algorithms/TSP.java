@@ -1,4 +1,4 @@
-public class TSPFunctions {
+public class TSP {
     static float bestTourDst;
     static int[] bestTourIndices;
     static float[][] costMatrix;

@@ -1,4 +1,4 @@
-public class KnapsackFunctions {
+public class Knapsack {
 
     static int calls = 0; // Global counter to track the number of recursive calls
 
