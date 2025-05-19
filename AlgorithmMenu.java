@@ -9,10 +9,14 @@ public class AlgorithmMenu {
             printMenu();
             int choice = scanner.nextInt();
             scanner.nextLine(); // consume newline
+            System.out.println();
 
             switch (choice) {
                 case 1:
-                    // runSelectionSort();
+                    System.out.println("=== Selection Sort ===");
+                    printChoice();
+                    choice = scanner.nextInt();
+                    SelectionSort.runSelectionSort(choice);
                     break;
                 case 2:
                     System.out.println("=== Bubble Sort ===");

@@ -45,8 +45,13 @@ public class BubbleSort {
     }
 
     public static void runBubbleSort(int choice) {
-        int[] elements = {57, 98, 65, 11, 3, 19, 22};
+        if(!(choice == 1 || choice ==2)){
+            System.out.println("Invalid option. Try again."); 
+            return;
+        }
 
+        int[] elements = {57, 98, 65, 11, 3, 19, 22};
+        
         System.out.println("Original array:");
         Utility.printArray(elements);
 
