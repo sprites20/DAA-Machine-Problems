@@ -21,27 +21,40 @@ public class SelectionSort{
             array[i] = temp;
         }
 	}
-    static void selectionSortOptimized(int array[]) {
-            int size = array.length;
-
-            for (int i = 0; i < size - 1; i++) {
-                int minIndex = i;
-
-                // Find the index of the smallest element in the unsorted part
-                for (int j = i + 1; j < size; j++) {
-                    if (array[j] < array[minIndex]) {
-                        minIndex = j;
-                    }
+    static void selectionSortOptimized(int[] arr, int size)
+    {
+        for (int i = 0, j = size - 1; i < j; i++, j--)
+        {
+            int min = arr[i];
+            int max = arr[i];
+            
+            int id_min = i;
+            int id_max = i;
+            
+            for (int k = i + 1; k < j; k++)
+            {
+                if (arr[k] > max)
+                {
+                    max = arr[k];
+                    id_max = k;
                 }
-
-                // Swap only if a smaller element is found
-                if (minIndex != i) {
-                    int temp = array[minIndex];
-                    array[minIndex] = array[i];
-                    array[i] = temp;
+                else if (arr[k] < min)
+                {
+                    min = arr[k];
+                    id_min = k;
                 }
             }
+            Utility.swap(arr, i, id_min);
+            if (arr[id_min] == max)
+            {
+                Utility.swap(arr, j, id_min);
+            }
+            else 
+            {
+                Utility.swap(arr, j, id_max);
+            }
         }
+    }
 
 	
 	public static void runSelectionSort(int choice) {
@@ -54,13 +67,11 @@ public class SelectionSort{
 		int[] array = {100, 75, 24, 39, 19};
         //create object and call the sort method
         if(choice == 1) selectionSortUnoptimized(array);
-        else selectionSortOptimized(array);
+        else selectionSortOptimized(array, array.length);
 
         //print the array in this ascending order: 19 24 39 75 100 
-        System.out.println("Sorted Array:\n");
-        for(int i=0; i<array.length; i++) {
-	        System.out.print(array[i] + " ");
-        }
+        System.out.println("Sorted Array:");
+        Utility.printArray(array);
 	}
 }
 
