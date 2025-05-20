@@ -31,7 +31,7 @@ public class SelectionSort{
             int id_min = i;
             int id_max = i;
             
-            for (int k = i + 1; k < j; k++)
+            for (int k = i + 1; k <= j; k++)
             {
                 if (arr[k] > max)
                 {
@@ -59,7 +59,7 @@ public class SelectionSort{
 	
 	public static void runSelectionSort(int choice) {
         //example array
-        if(!(choice != 1 || choice != 2)){
+        if(!(choice == 1 || choice == 2)){
             System.out.println("Invalid option. Try again."); 
             return;
         }
