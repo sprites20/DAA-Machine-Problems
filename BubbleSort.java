@@ -1,4 +1,7 @@
 public class BubbleSort {
+
+    private static int[] arr = Utility.randomizeArray();
+
     public static void bubbleSort(int[] arr) {
         int size = arr.length, i;
 
@@ -50,16 +53,26 @@ public class BubbleSort {
             return;
         }
 
-        int[] elements = {57, 98, 65, 11, 3, 19, 22};
+        // int[] elements = {57, 98, 65, 11, 3, 19, 22};
         
         System.out.println("Original array:");
-        Utility.printArray(elements);
+        Utility.printArray(arr);
 
-        if(choice == 1) bubbleSort(elements);
-        else if(choice == 2) optimizedBubbleSort(elements);
+        if(choice == 1) bubbleSort(arr);
+        else if(choice == 2) optimizedBubbleSort(arr);
         else System.out.println("Invalid choice.");
 
         System.out.println("Final sorted array:");
-        Utility.printArray(elements);
+        Utility.printArray(arr);
     }
+
+    public static void main(String[] args)
+    {
+        System.out.println("Original array:");
+        Utility.printArray(arr);
+
+        optimizedBubbleSort(arr);
+        System.out.println("Final sorted array:");
+        Utility.printArray(arr);
+    }   
 }

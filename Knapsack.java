@@ -26,7 +26,6 @@ public class Knapsack {
         }
     }
     
-	
     // Function to solve the 0/1 Knapsack problem using Dynamic Programming
     public static int knapsackDP(int[] weights, int[] values, int capacity) {
         int n = weights.length; // Number of items
@@ -63,24 +62,29 @@ public class Knapsack {
 		return output;
 	}
 
-    public static void main(String[] args) {
-        // Sample input arrays
-        int[] weights = {2, 3, 4, 5}; // Weights of the items
-        int[] values = {3, 4, 5, 8};  // Corresponding values of the items
-        int capacity = 5;             // Maximum weight capacity of the knapsack
-
-        // Call the recursive brute force knapsack function starting at index 0
-        int maxValue = knapsackBF(weights, values, capacity, 0);
-
-        // Print the result and the total number of recursive calls made
-        System.out.println("Maximum value in knapsack (Brute Force): " + maxValue);
-        System.out.println("Number of recursive calls (Brute Force): " + calls);
+    publc static void runKnapSack()
+    {
         
-        // Call the knapsack function and store the result
-        maxValue = knapsackDP(weights, values, capacity);
-
-        // Print the final result (maximum value achievable)
-        System.out.println("Maximum value in knapsack (DP): " + maxValue);
-
     }
+
+    // public static void main(String[] args) {
+    //     // Sample input arrays
+    //     int[] weights = {2, 3, 4, 5}; // Weights of the items
+    //     int[] values = {3, 4, 5, 8};  // Corresponding values of the items
+    //     int capacity = 5;             // Maximum weight capacity of the knapsack
+
+    //     // Call the recursive brute force knapsack function starting at index 0
+    //     int maxValue = knapsackBF(weights, values, capacity, 0);
+
+    //     // Print the result and the total number of recursive calls made
+    //     System.out.println("Maximum value in knapsack (Brute Force): " + maxValue);
+    //     System.out.println("Number of recursive calls (Brute Force): " + calls);
+        
+    //     // Call the knapsack function and store the result
+    //     maxValue = knapsackDP(weights, values, capacity);
+
+    //     // Print the final result (maximum value achievable)
+    //     System.out.println("Maximum value in knapsack (DP): " + maxValue);
+
+    // }
 }

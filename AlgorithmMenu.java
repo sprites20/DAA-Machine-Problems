@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class AlgorithmMenu {
 
     static Scanner scanner = new Scanner(System.in);
@@ -16,7 +17,18 @@ public class AlgorithmMenu {
                     System.out.println("=== Selection Sort ===");
                     printChoice();
                     choice = scanner.nextInt();
+
+                    long startTime = System.nanoTime(); // start timer
+
+                    // Method we want to run
                     SelectionSort.runSelectionSort(choice);
+
+                    long endTime = System.nanoTime(); // end timer
+                    long duration = endTime - startTime; // calculate elapsed time
+
+                    System.out.println("Execution time: " + duration + " nanoseconds");
+                    System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");
+                    
                     break;
                 case 2:
                     System.out.println("=== Bubble Sort ===");
@@ -49,7 +61,7 @@ public class AlgorithmMenu {
         }
     }
 
-    static void printMenu(){
+    public static void printMenu(){
         System.out.println("\n=== Algorithm Menu ===");
             System.out.println("1. Selection Sort");
             System.out.println("2. Bubble Sort");
@@ -60,9 +72,10 @@ public class AlgorithmMenu {
             System.out.print("Choose an algorithm (0-5): ");
     }
     
-    static void printChoice(){
+    public static void printChoice(){
         System.out.println("1. Traditional Algorithm");
         System.out.println("2. Optimized Algorithm");
         System.out.print("Choice : ");
     }
+
 }
