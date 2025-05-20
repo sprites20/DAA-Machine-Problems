@@ -2,7 +2,7 @@ import java.util.Scanner; //Import scanner for user input
 
 public class SequentialSearch {
     private static int count;//Variable for counting.
-    private static int[] arr = Utility.randomizeArray();
+    private static int[] arr = Utility.randomizeArray("assets\\unique_random_numbers.txt");
     private static int size = arr.length;
 
 

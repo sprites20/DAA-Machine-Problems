@@ -66,9 +66,6 @@ public class Knapsack {
 
     public static void runKnapsack(int choice)
     {
-        int [] weights = Utility.knapsackValues(40);
-        int [] values = Utility.knapsackValues(10);
-
         System.out.println("Please enter the capacity that the knapsack can contain: ");
 
 
@@ -82,6 +79,22 @@ public class Knapsack {
         {
             Scanner scanner = new Scanner(System.in);
             int capacity = Integer.parseInt(scanner.nextLine());
+
+            int [] weights = new int[capacity];
+            int [] values = new int[capacity];
+
+            System.out.println("Please enter the weights: ");
+            for (int i = 0; i < capacity; i++)
+            {
+                weights[i] = scanner.nextInt();
+            }
+
+            System.out.println("Please enter the weights: ");
+            for (int i = 0; i < capacity; i++)
+            {
+                values[i] = scanner.nextInt();
+            }
+
             long startTime = System.nanoTime(); // start timer
             // Call the recursive brute force knapsack function starting at index 0
             int maxValue = knapsackBF(weights, values, capacity, 0);
@@ -99,6 +112,22 @@ public class Knapsack {
 
             Scanner scanner = new Scanner(System.in);
             int capacity = Integer.parseInt(scanner.nextLine());
+
+            int [] weights = new int[capacity];
+            int [] values = new int[capacity];
+
+            System.out.println("Please enter the weights: ");
+            for (int i = 0; i < capacity; i++)
+            {
+                weights[i] = scanner.nextInt();
+            }
+
+            System.out.println("Please enter the weights: ");
+            for (int i = 0; i < capacity; i++)
+            {
+                values[i] = scanner.nextInt();
+            }
+
             long startTime = System.nanoTime(); // start timer
             // Call the knapsack function and store the result
 

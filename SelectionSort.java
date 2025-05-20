@@ -1,6 +1,6 @@
 public class SelectionSort{
 
-    private static int[] arr = Utility.randomizeArray();
+    private static int[] arr = Utility.randomizeArray("assets\\random_numbers.txt");
 	static void selectionSortUnoptimized(int array[]) {
 		int size = array.length; //get the size of the array
 

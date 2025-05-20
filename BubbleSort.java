@@ -1,6 +1,6 @@
 public class BubbleSort {
 
-    private static int[] arr = Utility.randomizeArray();
+    private static int[] arr = Utility.randomizeArray("assets\\random_numbers.txt");
 
     public static void bubbleSort(int[] arr) {
         int size = arr.length, i;

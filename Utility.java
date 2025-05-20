@@ -3,6 +3,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Random;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Utility
 {
@@ -20,50 +24,80 @@ public class Utility
         System.out.println();
     }
 
-    public static int[] randomizeArray()
+    public static int[] randomizeArray(String path)
     {
-        long seed = 42;  
-        Random rand = new Random(seed);
-        int[] arr = new int[1000];
+        ArrayList<Integer> numberList = new ArrayList<>();
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = rand.nextInt(1000); 
+        try {
+            File file = new File(path); // make sure this path is correct
+            Scanner scanner = new Scanner(file);
+
+            // Reads every token as an integer
+            while (scanner.hasNextInt()) {
+                numberList.add(scanner.nextInt());
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+            e.printStackTrace();
         }
 
-        return arr;
-    }
-
-    public static int[] randomizeUniqueArray() {
-        int[] arr = new int[1000];
-        for (int i = 0; i < 1000; i++) {
-            arr[i] = i;
+        // Convert to array if you really need an int[]
+        int[] numbers = new int[numberList.size()];
+        for (int i = 0; i < numberList.size(); i++) {
+            numbers[i] = numberList.get(i);
         }
 
-        // Convert the int[] array to a List<Integer>
-        List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
-
-        // Shuffle the List
-        Collections.shuffle(list);
-
-        // Convert the shuffled List back to an int[] array
-        int[] shuffledArr = list.stream().mapToInt(Integer::intValue).toArray();
-
-        return shuffledArr;
+        return numbers;
     }
 
 
-    public static int[] knapsackValues(int randomSeed){
+
+
+    // public static int[] randomizeArray()
+    // {
+    //     long seed = 42;  
+    //     Random rand = new Random(seed);
+    //     int[] arr = new int[1000];
+
+    //     for (int i = 0; i < arr.length; i++) {
+    //         arr[i] = rand.nextInt(1000); 
+    //     }
+
+    //     return arr;
+    // }
+
+    // public static int[] randomizeUniqueArray() {
+    //     int[] arr = new int[1000];
+    //     for (int i = 0; i < 1000; i++) {
+    //         arr[i] = i;
+    //     }
+
+    //     // Convert the int[] array to a List<Integer>
+    //     List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
+
+    //     // Shuffle the List
+    //     Collections.shuffle(list);
+
+    //     // Convert the shuffled List back to an int[] array
+    //     int[] shuffledArr = list.stream().mapToInt(Integer::intValue).toArray();
+
+    //     return shuffledArr;
+    // }
+
+
+    // public static int[] knapsackValues(int randomSeed){
         
-        long seed = randomSeed;  
-        Random rand = new Random(seed);
-        int [] arr = new int[10];
+    //     long seed = randomSeed;  
+    //     Random rand = new Random(seed);
+    //     int [] arr = new int[10];
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = rand.nextInt(10); 
-        }
+    //     for (int i = 0; i < arr.length; i++) {
+    //         arr[i] = rand.nextInt(10); 
+    //     }
 
-        return arr;
-    }
+    //     return arr;
+    // }
 
     }
     // public static void main(String[] args)
