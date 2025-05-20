@@ -45,18 +45,8 @@ public class SequentialSearch {
             System.out.println("Invalid option. Try again."); 
             return;
         }
-        
-        // //Inputs for the array initialization
-        // System.out.print("Enter size of array : ");
-        // int size = Integer.parseInt(scanner.nextLine());
 
-        // int[] arr = new int[size];
-        // System.out.println("Enter elements of the array:");
-        // for(int i = 0; i < size; i++) {
-        //     arr[i] = Integer.parseInt(scanner.nextLine());
-        // }
-
-        System.out.print("Enter number to search (0 - 999): ");
+        System.out.print("Enter number to search (0 - 9999): ");
         int searchItem = Integer.parseInt(scanner.nextLine());
 
         int searchIndex;

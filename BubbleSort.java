@@ -77,14 +77,4 @@ public class BubbleSort {
         System.out.println("Final sorted array:");
         Utility.printArray(arr);
     }
-
-    // public static void main(String[] args)
-    // {
-    //     System.out.println("Original array:");
-    //     Utility.printArray(arr);
-
-    //     optimizedBubbleSort(arr);
-    //     System.out.println("Final sorted array:");
-    //     Utility.printArray(arr);
-    // }   
 }

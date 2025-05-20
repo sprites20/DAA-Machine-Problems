@@ -51,13 +51,6 @@ public class Knapsack {
         return dp[capacity];
     }
 	
-	public static int solveKnapsackBF(int[] weights, int[] values, int capacity, int index){
-		calls = 0;
-		int output = knapsackBF(weights, values, capacity, 0);
-		System.out.println("Number of recursive calls (Brute Force): " + calls);
-		return output;
-	}
-	
 	public static int solveKnapsackDP(int[] weights, int[] values, int capacity){
 		calls = 0;
 		int output = knapsackDP(weights, values, capacity);
@@ -75,9 +68,7 @@ public class Knapsack {
             return;
         }
 
-        if(choice == 1)
-        {
-            Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
             int capacity = Integer.parseInt(scanner.nextLine());
 
             int [] weights = new int[capacity];
@@ -89,78 +80,34 @@ public class Knapsack {
                 weights[i] = scanner.nextInt();
             }
 
-            System.out.println("Please enter the weights: ");
+            System.out.println("Please enter the values: ");
             for (int i = 0; i < capacity; i++)
             {
                 values[i] = scanner.nextInt();
             }
 
-            long startTime = System.nanoTime(); // start timer
+        long startTime = System.nanoTime(); // start timer
+        
+        if(choice == 1)
+        {
             // Call the recursive brute force knapsack function starting at index 0
             int maxValue = knapsackBF(weights, values, capacity, 0);
             
             // Print the result and the total number of recursive calls made
-            System.out.println("Maximum value in knapsack (Brute Force): " + maxValue);
             System.out.println("Number of recursive calls (Brute Force): " + calls);
-            long endTime = System.nanoTime(); // end timer
-            long duration = endTime - startTime; // calculate elapsed time
-            System.out.println("Execution time: " + duration + " nanoseconds");
-            System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");
+            System.out.println("Maximum value in knapsack (Brute Force): " + maxValue);  
         } 
         else if(choice == 2)
         {
-
-            Scanner scanner = new Scanner(System.in);
-            int capacity = Integer.parseInt(scanner.nextLine());
-
-            int [] weights = new int[capacity];
-            int [] values = new int[capacity];
-
-            System.out.println("Please enter the weights: ");
-            for (int i = 0; i < capacity; i++)
-            {
-                weights[i] = scanner.nextInt();
-            }
-
-            System.out.println("Please enter the weights: ");
-            for (int i = 0; i < capacity; i++)
-            {
-                values[i] = scanner.nextInt();
-            }
-
-            long startTime = System.nanoTime(); // start timer
-            // Call the knapsack function and store the result
-
             int maxValue = knapsackDP(weights, values, capacity);
 
             // Print the final result (maximum value achievable)
-            System.out.println("Maximum value in knapsack (DP): " + maxValue);
-            long endTime = System.nanoTime(); // end timer
-            long duration = endTime - startTime; // calculate elapsed time
-            System.out.println("Execution time: " + duration + " nanoseconds");
-            System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");    
+            System.out.println("Maximum value in knapsack (DP): " + maxValue);    
         }
+
+        long endTime = System.nanoTime(); // end timer
+        long duration = endTime - startTime; // calculate elapsed time
+        System.out.println("Execution time: " + duration + " nanoseconds");
+        System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");
     }
-
-
-    // public static void main(String[] args) {
-    //     // Sample input arrays
-    //     int[] weights = {2, 3, 4, 5}; // Weights of the items
-    //     int[] values = {3, 4, 5, 8};  // Corresponding values of the items
-    //     int capacity = 5;             // Maximum weight capacity of the knapsack
-
-    //     // Call the recursive brute force knapsack function starting at index 0
-    //     int maxValue = knapsackBF(weights, values, capacity, 0);
-
-    //     // Print the result and the total number of recursive calls made
-    //     System.out.println("Maximum value in knapsack (Brute Force): " + maxValue);
-    //     System.out.println("Number of recursive calls (Brute Force): " + calls);
-        
-    //     // Call the knapsack function and store the result
-    //     maxValue = knapsackDP(weights, values, capacity);
-
-    //     // Print the final result (maximum value achievable)
-    //     System.out.println("Maximum value in knapsack (DP): " + maxValue);
-
-    // }
 }
