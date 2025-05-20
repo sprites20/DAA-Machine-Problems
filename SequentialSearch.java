@@ -3,6 +3,7 @@ import java.util.Scanner; //Import scanner for user input
 public class SequentialSearch {
     private static int count;//Variable for counting.
     private static int[] arr = Utility.randomizeArray();
+    private static int size = arr.length;
 
 
     //Method to call to search
@@ -60,9 +61,21 @@ public class SequentialSearch {
 
         int searchIndex;
         if(choice == 1){
+            long startTime = System.nanoTime(); // start timer
             searchIndex = searchTraditional(arr, searchItem, size);
+            long endTime = System.nanoTime(); // end timer
+            long duration = endTime - startTime; // calculate elapsed time
+            System.out.println("Execution time: " + duration + " nanoseconds");
+            System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");
+            
         }else{
+            long startTime = System.nanoTime(); // start timer
             searchIndex = searchOptimized(arr, searchItem, size);
+            long endTime = System.nanoTime(); // end timer
+            long duration = endTime - startTime; // calculate elapsed time
+            System.out.println("Execution time: " + duration + " nanoseconds");
+            System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");
+            
         }
 
         if(searchIndex != -1){//Outputs the target/search index if found

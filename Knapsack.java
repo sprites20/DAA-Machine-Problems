@@ -1,3 +1,5 @@
+import java.util.Scanner; //Import scanner for user input
+
 public class Knapsack {
 
     static int calls = 0; // Global counter to track the number of recursive calls
@@ -62,10 +64,55 @@ public class Knapsack {
 		return output;
 	}
 
-    publc static void runKnapSack()
+    public static void runKnapsack(int choice)
     {
-        
+        int [] weights = Utility.knapsackValues(40);
+        int [] values = Utility.knapsackValues(10);
+
+        System.out.println("Please enter the capacity that the knapsack can contain: ");
+
+
+
+        if(!(choice == 1 || choice ==2)){
+            System.out.println("Invalid option. Try again."); 
+            return;
+        }
+
+        if(choice == 1)
+        {
+            Scanner scanner = new Scanner(System.in);
+            int capacity = Integer.parseInt(scanner.nextLine());
+            long startTime = System.nanoTime(); // start timer
+            // Call the recursive brute force knapsack function starting at index 0
+            int maxValue = knapsackBF(weights, values, capacity, 0);
+            
+            // Print the result and the total number of recursive calls made
+            System.out.println("Maximum value in knapsack (Brute Force): " + maxValue);
+            System.out.println("Number of recursive calls (Brute Force): " + calls);
+            long endTime = System.nanoTime(); // end timer
+            long duration = endTime - startTime; // calculate elapsed time
+            System.out.println("Execution time: " + duration + " nanoseconds");
+            System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");
+        } 
+        else if(choice == 2)
+        {
+
+            Scanner scanner = new Scanner(System.in);
+            int capacity = Integer.parseInt(scanner.nextLine());
+            long startTime = System.nanoTime(); // start timer
+            // Call the knapsack function and store the result
+
+            int maxValue = knapsackDP(weights, values, capacity);
+
+            // Print the final result (maximum value achievable)
+            System.out.println("Maximum value in knapsack (DP): " + maxValue);
+            long endTime = System.nanoTime(); // end timer
+            long duration = endTime - startTime; // calculate elapsed time
+            System.out.println("Execution time: " + duration + " nanoseconds");
+            System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");    
+        }
     }
+
 
     // public static void main(String[] args) {
     //     // Sample input arrays

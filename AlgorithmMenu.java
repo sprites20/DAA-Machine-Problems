@@ -17,18 +17,7 @@ public class AlgorithmMenu {
                     System.out.println("=== Selection Sort ===");
                     printChoice();
                     choice = scanner.nextInt();
-
-                    long startTime = System.nanoTime(); // start timer
-
-                    // Method we want to run
                     SelectionSort.runSelectionSort(choice);
-
-                    long endTime = System.nanoTime(); // end timer
-                    long duration = endTime - startTime; // calculate elapsed time
-
-                    System.out.println("Execution time: " + duration + " nanoseconds");
-                    System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");
-                    
                     break;
                 case 2:
                     System.out.println("=== Bubble Sort ===");
@@ -51,6 +40,7 @@ public class AlgorithmMenu {
                     System.out.println("=== Knapsack Problem ===");
                     printChoice();
                     choice = scanner.nextInt();
+                    Knapsack.runKnapsack(choice);
                     break;
                 case 0:
                     System.out.println("Exiting. Goodbye!");

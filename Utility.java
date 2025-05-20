@@ -51,6 +51,21 @@ public class Utility
         return shuffledArr;
     }
 
+
+    public static int[] knapsackValues(int randomSeed){
+        
+        long seed = randomSeed;  
+        Random rand = new Random(seed);
+        int [] arr = new int[10];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = rand.nextInt(10); 
+        }
+
+        return arr;
+    }
+
+    }
     // public static void main(String[] args)
     // {
     //     int[] arr = randomizeUniqueArray();
@@ -61,4 +76,3 @@ public class Utility
     //     }
 
     // }
-}

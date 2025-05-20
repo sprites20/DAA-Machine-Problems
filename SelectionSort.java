@@ -1,5 +1,3 @@
-package com.myapp.package.algorithms;
-
 public class SelectionSort{
 
     private static int[] arr = Utility.randomizeArray();
@@ -26,6 +24,7 @@ public class SelectionSort{
         }
 	}
     static void selectionSortOptimized(int array[]) {
+        int size = array.length;
         for (int i = 0, j = size - 1; i < j; i++, j--)
         {
             int min = arr[i];
@@ -47,14 +46,14 @@ public class SelectionSort{
                     id_min = k;
                 }
             }
-            swap(arr, i, id_min);
+            Utility.swap(arr, i, id_min);
             if (arr[id_min] == max)
             {
-                swap(arr, j, id_min);
+                Utility.swap(arr, j, id_min);
             }
             else 
             {
-                swap(arr, j, id_max);
+                Utility.swap(arr, j, id_max);
             }
         }
     }
@@ -70,14 +69,26 @@ public class SelectionSort{
         //create object and call the sort method
         if(choice == 1)
         {
+            long startTime = System.nanoTime(); // start timer
             selectionSortUnoptimized(arr);  
+            long endTime = System.nanoTime(); // end timer
+            long duration = endTime - startTime; // calculate elapsed time
+            System.out.println("Execution time: " + duration + " nanoseconds");
+            System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");
+            
         } 
-        else selectionSortOptimized(arr);
-
-        System.out.println("Sorted Array:\n");
-        for(int i=0; i<array.length; i++) {
-	        System.out.print(arr[i] + " ");
+        else if (choice == 2)
+        {
+            long startTime = System.nanoTime(); // start timer
+            selectionSortOptimized(arr);
+            long endTime = System.nanoTime(); // end timer
+            long duration = endTime - startTime; // calculate elapsed time
+            System.out.println("Execution time: " + duration + " nanoseconds");
+            System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");            
         }
+
+        System.out.println("Final sorted array:");
+        Utility.printArray(arr);
 	}
 }
 

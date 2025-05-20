@@ -25,11 +25,9 @@ public class BubbleSort {
 
             for (int j = 0; j < i; j++) {
                 if (arr[j] > arr[j + 1]) {
+                    
                     // Swap elements
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-
+                    Utility.swap(arr, j, j + 1);
                     swapped = true;
                     lastIndex = j;
                 }
@@ -52,27 +50,41 @@ public class BubbleSort {
             System.out.println("Invalid option. Try again."); 
             return;
         }
-
-        // int[] elements = {57, 98, 65, 11, 3, 19, 22};
         
         System.out.println("Original array:");
         Utility.printArray(arr);
 
-        if(choice == 1) bubbleSort(arr);
-        else if(choice == 2) optimizedBubbleSort(arr);
-        else System.out.println("Invalid choice.");
+        if(choice == 1)
+        {
+            long startTime = System.nanoTime(); // start timer
+            bubbleSort(arr);
+            long endTime = System.nanoTime(); // end timer
+            long duration = endTime - startTime; // calculate elapsed time
+            System.out.println("Execution time: " + duration + " nanoseconds");
+            System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");
+        } 
+        else if(choice == 2)
+        {
+            long startTime = System.nanoTime(); // start timer
+            optimizedBubbleSort(arr);
+            long endTime = System.nanoTime(); // end timer
+            long duration = endTime - startTime; // calculate elapsed time
+            System.out.println("Execution time: " + duration + " nanoseconds");
+            System.out.println("Execution time: " + (duration / 1_000_000.0) + " milliseconds");    
+        }
 
+        // Print the sorted array
         System.out.println("Final sorted array:");
         Utility.printArray(arr);
     }
 
-    public static void main(String[] args)
-    {
-        System.out.println("Original array:");
-        Utility.printArray(arr);
+    // public static void main(String[] args)
+    // {
+    //     System.out.println("Original array:");
+    //     Utility.printArray(arr);
 
-        optimizedBubbleSort(arr);
-        System.out.println("Final sorted array:");
-        Utility.printArray(arr);
-    }   
+    //     optimizedBubbleSort(arr);
+    //     System.out.println("Final sorted array:");
+    //     Utility.printArray(arr);
+    // }   
 }
